@@ -19,7 +19,7 @@ class GoogleLogin extends Controller
     {
         try {
             if (auth()->check()) {
-                $user = Socialite::driver('google')->user();
+                $user = Socialite::driver('google')->stateless()->user();
                 $loggedInUser = auth()->user();
                 $loggedInUser->google_id = $user->id;
                 $loggedInUser->google_access_token = $user->token;

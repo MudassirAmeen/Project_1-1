@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $meetings = meetings::where(['creator_id' => auth()->id()])->get();
+        $meetings = meetings::where(['creator_id' => auth()->id()])->paginate(1);
         return view('home', ['meetings' => $meetings]);
     }
 }
